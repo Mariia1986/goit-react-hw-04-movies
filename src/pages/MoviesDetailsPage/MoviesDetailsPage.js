@@ -4,7 +4,7 @@ import FilmDetails from "../../components/FilmDetails"
 import Cast from "../../components/Cast"
 import Rewievs from "../../components/Rewievs"
 import { NavLink, Route,Switch} from "react-router-dom"
-const{getMovieInfo,getFilmActors,getRewiesFilm}=api
+const{getMovieInfo}=api
 
 
 class MoviesDetailsPage extends Component{
