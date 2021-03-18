@@ -26,7 +26,7 @@ getMovieInfo(id).then(result=>{
 
     render(){
         const{filmDetail}=this.state
-        console.log(filmDetail)
+        // console.log(filmDetail)
         return(
             <div>
         <div>

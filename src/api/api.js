@@ -37,17 +37,43 @@ const getSearchMovies=query=> {
         return response.results;
       });
   }
-  const  getFilmActors=id=>{
-    const url = `${baseUrl}movie/${id}/credits?api_key=${key}&language=en-US`;
-    return axios.get(url).then(response=> {return response.results;
-    })
-  }
+  // const  getFilmActors=id=>{
+  //   const url = `${baseUrl}movie/${id}/credits?api_key=${key}&language=en-US`;
+  //   return axios.get(url).then(response=> {return response;
+  //   }).then(({ cast }) => {
+  //           return cast;
+  //         })
+  // }
 
-  const getRewiesFilm=id=>{
-    const url = `${baseUrl}movie/${id}/reviews?api_key=${key}&language=en-US&page=1`;
-    return axios.get(url).then(response=> {return response.results;
-    })
-  }
+
+  const  getFilmActors = id => {
+    return fetch(`${baseUrl}movie/${id}/credits?api_key=${key}`)
+      .then(res => {
+        return res.json();
+      })
+      .then(({ cast }) => {
+        return cast;
+      });
+  };
+
+  // const getRewiesFilm=id=>{
+  //   const url = `${baseUrl}movie/${id}/reviews?api_key=${key}`;
+  //   return axios.get(url).then(response=> {return response.results;
+  //   })
+  // }
+  const getRewiesFilm = id => {
+    return fetch(`${baseUrl}movie/${id}/reviews?api_key=${key}`)
+      .then(res => {
+        return res.json();
+      })
+      .then(({ results }) => {
+        if (results.length === 0) {
+          return Promise.reject('No reviews for this film');
+        }
+        return results;
+      });
+  };
+
 
   const api={
     getTrendFilms,
