@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const SerchingFilms=({films, match, location})=>{
@@ -25,4 +25,4 @@ const SerchingFilms=({films, match, location})=>{
     )
 }
 
-export default SerchingFilms
+export default withRouter(SerchingFilms)

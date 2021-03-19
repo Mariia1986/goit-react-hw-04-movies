@@ -26,12 +26,13 @@ getMovieInfo(id).then(result=>{
 
     render(){
         const{filmDetail}=this.state
-        // console.log(filmDetail)
+        const{location}=this.props
         return(
             <div>
+              <button onClick={()=>this.props.history.push(location.state.from)} type="button">Go back</button>
         <div>
 
-     {filmDetail && < FilmDetails filmDetail={filmDetail}/>}
+     {filmDetail && < FilmDetails  filmDetail={filmDetail}/>}
         
          
             </div>

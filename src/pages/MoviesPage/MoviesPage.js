@@ -11,7 +11,13 @@ class MoviesPage extends Component {
     movies: [],
     error: '',
   };
+  componentDidMount() {
+    const { pathname, search } = this.props.location;
 
+    if (pathname && search) {
+      this.setState({ query: search.slice(7) });
+    }
+  }
   componentDidUpdate(prevProps, prevState) {
     const { query } = this.state;
     // if (query !== prevState.query) {
@@ -33,7 +39,7 @@ class MoviesPage extends Component {
       this.setState({ movies });
     });
     history.push({ ...location, search: `query=${this.state.query.trim()}` });
-    this.state.query=""
+    // this.state.query=""
   };
 
 

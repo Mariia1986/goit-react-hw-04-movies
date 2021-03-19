@@ -2,6 +2,7 @@ import React from "react"
 
 
 
+
 const FilmDetails=({filmDetail})=>{
     const{title,backdrop_path, overview, genres}=filmDetail
    return(

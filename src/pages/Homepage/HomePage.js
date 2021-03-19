@@ -19,6 +19,7 @@ class HomePage extends Component {
 
   render() {
       const{results}=this.state
+      const{match,location}=this.props
     console.log(results);
     return (
         <div>
@@ -26,7 +27,10 @@ class HomePage extends Component {
         <ul>
         {results.length>0 && results.map(({id, original_title})=>{
             return <li key={id}>
-                <Link to={`movies/${id}`}>{original_title}</Link>
+                <Link to= {{
+                  pathname: `movies/${id}`,
+                  state: { from: location },
+                }}>{original_title}</Link>
             </li>
           })}
         </ul>
