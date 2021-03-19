@@ -29,14 +29,31 @@ const baseUrl=  'https://api.themoviedb.org/3/';
     return  axios.get(url).then(response=> {return response.data})
 }
 
-const getSearchMovies=query=> {
-    const url = `${baseUrl}search/movie?api_key=${key}&language=en-US&query=${query}`;
-    return axios.get(url)
-      .then(response => {
+// const getSearchMovies=query=> {
+//     const url = `${baseUrl}search/movie?api_key=${key}&language=en-US&query=${query}`;
+//     return axios.get(url)
+//       .then(response => {
        
-        return response.results;
-      });
-  }
+//         return response.results;
+//       });
+//   }
+
+const getSearchMovies = query => {
+  return fetch(`${baseUrl}search/movie?query=${query}&api_key=${key}`)
+    .then(res => {
+      return res.json();
+    })
+    .then(({ results }) => {
+      if (results.length === 0) {
+        return Promise.reject(`Nothing found for your request: ${query}`);
+      }
+      return results;
+    });
+};
+
+
+
+
   // const  getFilmActors=id=>{
   //   const url = `${baseUrl}movie/${id}/credits?api_key=${key}&language=en-US`;
   //   return axios.get(url).then(response=> {return response;
