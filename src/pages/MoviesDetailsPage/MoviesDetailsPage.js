@@ -26,7 +26,7 @@ getMovieInfo(id).then(result=>{
 
     render(){
         const{filmDetail}=this.state
-        const{location}=this.props
+        const{location, match}=this.props
         return(
             <div>
               <button onClick={()=>this.props.history.push(location.state.from)} type="button">Go back</button>
@@ -40,10 +40,16 @@ getMovieInfo(id).then(result=>{
                 <h2>Additional information</h2>
               <ul>
                   <li>
-                      <NavLink to={`${this.props.match.url}/cast`}>Cast </NavLink>
+                      <NavLink to={{
+                    pathname: `${match.url}/cast`,
+                    state: { ...location.state },
+                  }}>Cast </NavLink>
                       </li>
                       <li>
-                      <NavLink to={`${this.props.match.url}/rewievs`}>Rewievs</NavLink>
+                      <NavLink to={{
+                    pathname: `${match.url}/rewievs`,
+                    state: { ...location.state },
+                  }}>Rewievs</NavLink>
                   </li>
                  
               </ul>
