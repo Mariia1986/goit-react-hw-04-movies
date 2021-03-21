@@ -1,21 +1,22 @@
 import React from "react"
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import s from "./SearchingFilms.module.css"
 
 const SerchingFilms=({films, match, location})=>{
 
 
 
     return(
-        <ul>
+        <ul className={s.searchList}>
             {films && films.map(({ id, original_title }) => (
-          <li key={id} className="film">
+          <li  key={id} className={s.searchListItem}>
             <NavLink
               to={{
                 pathname: `${match.path}/${id}`,
                 state: { from: location },
               }}
-              className="filmLink"
+              className={s.navLink}
             >
            {original_title}
             </NavLink>

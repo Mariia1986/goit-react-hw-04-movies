@@ -1,12 +1,23 @@
 import { Component, Suspense, lazy } from 'react';
 import api from '../../api/api';
 import FilmDetails from '../../components/FilmDetails';
-import Cast from '../../components/Cast';
-import Rewievs from '../../components/Rewievs';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import Loading from '../../components/Loader';
 import '../../App.css';
+import s from "./MoviesDetailsPage.module.css"
 const { getMovieInfo } = api;
+
+const Cast = lazy(() =>
+  import(
+    '../../components/Cast' /* webpackChunkName: "movie-details-page-cast" */
+  ),
+);
+
+const Rewievs = lazy(() =>
+  import(
+    '../../components/Rewievs' /* webpackChunkName: "movie-details-page-reviews" */
+  ),
+);
 
 class MoviesDetailsPage extends Component {
   state = {
@@ -48,7 +59,7 @@ class MoviesDetailsPage extends Component {
                   state: { ...location.state },
                 }}
               >
-                Cast{' '}
+                Cast
               </NavLink>
             </li>
             <li>
