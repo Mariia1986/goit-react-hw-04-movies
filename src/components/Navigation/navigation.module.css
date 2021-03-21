@@ -1,0 +1,29 @@
+.navLink{
+    
+    color: currentColor;
+}
+
+.activeNavLink{
+    color:rgb(117, 23, 39);
+}
+
+
+
+.navContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.navItem{
+margin-left: 50px;
+font-size: 70px;
+font-weight: 700;
+}
+
+ul{
+    /* margin: 0;
+    padding: 0; */
+    list-style: none;
+}

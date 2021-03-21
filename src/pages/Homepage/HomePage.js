@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import api from '../../api/api';
-import { Link} from "react-router-dom"
+import { Link } from 'react-router-dom';
+import s from "./HomePage.module.css"
 const { getTrendFilms } = api;
-// console.log(getTrendFilms());
+
 
 class HomePage extends Component {
   state = {
-    results: "",
+    results: [],
   };
 
   componentDidMount() {
@@ -15,31 +16,34 @@ class HomePage extends Component {
     });
   }
 
-
-
   render() {
-      const{results}=this.state
-      const{match,location}=this.props
+    const { results } = this.state;
+    const { location } = this.props;
     console.log(results);
     return (
-        <div>
-        <h1>Trending today</h1>;
-        <ul>
-        {results.length>0 && results.map(({id, original_title})=>{
-            return <li key={id}>
-                <Link to= {{
-                  pathname: `movies/${id}`,
-                  state: { from: location },
-                }}>{original_title}</Link>
-            </li>
-          })}
+      <div>
+        <h1 className={s.header}>Trending today</h1>
+        <ul className={s.trendList}> 
+          {
+            results.map(({ id, original_title }) => {
+              return (
+                
+                <li className={s.trendListItem} key={id}>
+                  <Link  className={s.navLink} activeClassName={s.activeNavLink}
+                    to={{
+                      pathname: `movies/${id}`,
+                      state: { from: location },
+                    }}
+                  >
+                    {original_title}
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
-        
-          </div>
-    )
-  
+      </div>
+    );
   }
-  
 }
 
 export default HomePage;

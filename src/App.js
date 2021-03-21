@@ -2,11 +2,20 @@
 import {Switch, Route} from "react-router-dom"
 import { Component, Suspense, lazy } from 'react';
 import Navigation from './components/Navigation'
-import HomePage from "./pages/Homepage"
-import MoviesDetailsPage from "./pages/MoviesDetailsPage"
-import MoviesPage from "./pages/MoviesPage"
+import Loading from "./components/Loader"
+import  "./App.css"
 
-
+const HomePage = lazy(() =>
+  import('./pages/Homepage' /* webpackChunkName: "home-page" */),
+);
+const MoviesPage = lazy(() =>
+  import('./pages/MoviesPage' /* webpackChunkName: "movies-page" */),
+);
+const MoviesDetailsPage = lazy(() =>
+  import(
+    './pages/MoviesDetailsPage' /* webpackChunkName: "movies-details-page" */
+  ),
+);
 
 class App extends Component {
    
@@ -19,8 +28,8 @@ class App extends Component {
         <Navigation /> 
          <Suspense
           fallback={
-            <div>
-              {/* <Loading /> */}
+            <div className="loaderContainer">
+              <Loading/>
             </div>
           }
         >

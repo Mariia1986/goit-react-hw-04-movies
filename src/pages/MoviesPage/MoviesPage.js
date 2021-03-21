@@ -2,6 +2,8 @@ import React, { Component, Suspense } from 'react';
 import api from '../../api/api';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import SerchingFilms from '../../components/SearchingFilms';
+import Loading from '../../components/Loader';
+import s from './MoviesPage.module.css';
 
 const { getSearchMovies } = api;
 
@@ -11,22 +13,14 @@ class MoviesPage extends Component {
     movies: [],
     error: '',
   };
-  // componentDidMount() {
-  //   const { pathname, search } = this.props.location;
 
-  //   if (pathname && search) {
-  //     this.setState({ query: search.slice(7) });
-  //   }
-  // }
-  componentDidUpdate(prevProps, prevState) {
-    const { query } = this.state;
-    // if (query !== prevState.query) {
-    //   getSearchMovies(query).then(movies => {
-    //     this.setState({ movies });
-    //   });
-    // }
+  componentDidMount() {
+    if (this.props.location.search) {
+      getSearchMovies(this.props.location.search.slice(7)).then(movies => {
+        this.setState({ movies });
+      });
+    }
   }
-
   handleChange = e => {
     this.setState({ query: e.target.value });
   };
@@ -38,38 +32,37 @@ class MoviesPage extends Component {
     getSearchMovies(this.state.query.toLowerCase()).then(movies => {
       this.setState({ movies });
     });
-    history.push({ ...location, search: `query=${this.state.query.trim()}` });
-    // this.state.query=""
+    history.push({ ...location, search: `query=${this.state.query}` });
+    this.state.query = '';
   };
-
-
-
 
   render() {
     const { movies, query, error } = this.state;
     return (
       <div>
-        <form className="searchForm" onSubmit={this.hendleSubmit}>
-          <button type="submit" className="searchFormButton">
-            <span className="searchFormButtonLabel">Search</span>
+       <div className={s.searchFormContainer}>
+        <form className={s.searchForm} onSubmit={this.hendleSubmit}>
+          <button type="submit" className={s.searchFormbutton}>
+            <span className={s.searchFormbuttonlabel}>Search</span>
           </button>
 
           <input
-            className="searchFormInput"
+            className={s.searchForminput}
             type="text"
             placeholder="Search movies.."
             value={query}
             onChange={this.handleChange}
           />
         </form>
+        </div>
         <div>
           {
             <Suspense
-            // fallback={
-            //   <div className={s.loaderContainer}>
-            //     <Loading />
-            //   </div>
-            // }
+              fallback={
+                <div className="loaderContainer">
+                  <Loading />
+                </div>
+              }
             >
               <Route
                 to={`/movies/query=${query}`}

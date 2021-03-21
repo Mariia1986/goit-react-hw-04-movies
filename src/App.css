@@ -6,7 +6,9 @@
 p{
   margin: 0px;
 }
-/* ul{
-  margin: 0;
-  padding: 0;
-} */
+
+.loaderContainer{
+  width: 150px;
+  height: 80px;
+  margin: 0 auto;
+}
