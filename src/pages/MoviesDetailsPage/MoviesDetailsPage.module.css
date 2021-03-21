@@ -1,0 +1,35 @@
+.navLink{
+    
+    color: currentColor;
+}
+
+.activeNavLink{
+    color:rgb(117, 23, 39);
+}
+
+.navItem{
+    margin-left: 50px;
+font-size: 30px;
+font-weight: 500;
+}
+.navContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.filmDetailsTitle{
+    text-align: center;
+    color: rgb(117, 23, 39);
+    font-size: 30px;
+}
+.buttonGoBack{
+    outline:none;
+    background-color:  rgb(117, 23, 39);
+   color: white;
+   max-width: 300px;
+   padding: 5px;
+   border-radius: 3px;
+   font-size: 20px;
+
+}

@@ -1,0 +1,31 @@
+.filmDetailsTitle{
+    text-align: center;
+    color: rgb(117, 23, 39);
+    font-size: 30px;
+}
+
+.filmDetailsImg{
+display: block;
+height: 100%;
+width:500px;
+margin: 0 auto;
+
+}
+
+.filmDetailsOverview{
+    text-align: center;
+    font-size: 20px;
+    font-style: oblique;
+}
+
+.genresList{
+    display: flex;
+    justify-content: center;
+
+}
+
+.genresListItem{
+    font-size: 20px;
+    font-style: oblique;
+    margin-right: 10px;
+}

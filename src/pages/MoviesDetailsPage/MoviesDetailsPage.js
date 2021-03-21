@@ -45,15 +45,15 @@ class MoviesDetailsPage extends Component {
     const { location, match } = this.props;
     return (
       <div>
-        <button onClick={this.handleGoBack} type="button">
-          Go back
+        <button className={s.buttonGoBack} onClick={this.handleGoBack} type="button">
+        {'<- Go back'}
         </button>
         <div>{filmDetail && <FilmDetails filmDetail={filmDetail} />}</div>
         <div>
-          <h2>Additional information</h2>
-          <ul>
-            <li>
-              <NavLink
+          <h2 className={s.filmDetailsTitle}>Additional information</h2>
+          <ul className={s.navContainer}>
+            <li className={s.navItem}>
+              <NavLink className={s.navLink} activeClassName={s.activeNavLink}
                 to={{
                   pathname: `${match.url}/cast`,
                   state: { ...location.state },
@@ -62,8 +62,8 @@ class MoviesDetailsPage extends Component {
                 Cast
               </NavLink>
             </li>
-            <li>
-              <NavLink
+            <li className={s.navItem}>
+              <NavLink className={s.navLink} activeClassName={s.activeNavLink}
                 to={{
                   pathname: `${match.url}/rewievs`,
                   state: { ...location.state },

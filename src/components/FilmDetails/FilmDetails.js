@@ -1,4 +1,5 @@
 import React from "react"
+import s from "./filmDetails.module.css"
 
 
 
@@ -8,13 +9,13 @@ const FilmDetails=({filmDetail})=>{
    return(
     <div>
                   
-    <h2>{title}</h2>
-    <img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}/>
-    <h3>Owerview</h3>
-    <p>{overview}</p>
-    <h3>Genres</h3>
-    <ul>
-         {genres && genres.map(({id, name})=><li key={id}>{name}</li>)}
+    <h2 className={s.filmDetailsTitle}>{title}</h2>
+    <img className={s.filmDetailsImg} src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}/>
+    <h3 className={s.filmDetailsTitle}>Owerview</h3>
+    <p className={s.filmDetailsOverview}>{overview}</p>
+    <h3 className={s.filmDetailsTitle}>Genres</h3>
+    <ul className={s.genresList}>
+         {genres && genres.map(({id, name})=><li className={s.genresListItem} key={id}>{name}</li>)}
     </ul>
 </div>
    )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../api/api';
+import s from "./Cast.module.css"
 const { getFilmActors } = api;
 
 // console.log();
@@ -19,31 +20,25 @@ class Cast extends Component {
 
   render() {
     const { actors } = this.state;
-    // console.log(actors);
+
     return (
-      <ul>
+      <ul className={s.castList}>
         {actors &&
-          actors.map(
-            ({
-              profile_path,
-              id,
-              original_name,
-              character,
-            }) => {return(
-              <li key={id}>
+          actors.map(({ profile_path, id, original_name, character }) => {
+            return (
+              <li className={s.castListItem} key={id}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                  className={s.castListImg}
+                  src={`https://image.tmdb.org/t/p/w500${profile_path} `}
                   alt={original_name}
                   width="200"
                 />
 
-                <p>{original_name}</p>
-                <p>Character: {character}</p>
+                <p className={s.castListName}>{original_name}</p>
+                <p className={s.castListharacter}>Character: {character}</p>
               </li>
-            )
-              
-            },
-          )}
+            );
+          })}
       </ul>
     );
   }
