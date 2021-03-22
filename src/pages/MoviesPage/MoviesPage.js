@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import api from '../../api/api';
-import { NavLink, Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import SerchingFilms from '../../components/SearchingFilms';
 import Loading from '../../components/Loader';
 import s from './MoviesPage.module.css';
@@ -15,12 +15,30 @@ class MoviesPage extends Component {
   };
 
   componentDidMount() {
+    // console.log(this.props.location.search);
     if (this.props.location.search) {
-      getSearchMovies(this.props.location.search.slice(7)).then(movies => {
-        this.setState({ movies });
-      });
-    }
+      this.getSearchbyQuery(this.props.location.search.slice(7));
+    } 
+    
   }
+
+  getSearchbyQuery = query => {
+    getSearchMovies(query)
+      .then(movies => {
+        this.setState({ movies });
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
+  };
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   const { query } = this.state;
+  //   if (prevState.query !== query) {
+  //     this.getSearchbyQuery(query);
+  //   }
+  // }
+
   handleChange = e => {
     this.setState({ query: e.target.value });
   };
@@ -29,9 +47,8 @@ class MoviesPage extends Component {
     e.preventDefault();
     const { history, location } = this.props;
 
-    getSearchMovies(this.state.query.toLowerCase()).then(movies => {
-      this.setState({ movies });
-    });
+    this.getSearchbyQuery(this.state.query.toLowerCase());
+
     history.push({ ...location, search: `query=${this.state.query}` });
     this.state.query = '';
   };
@@ -40,20 +57,20 @@ class MoviesPage extends Component {
     const { movies, query, error } = this.state;
     return (
       <div>
-       <div className={s.searchFormContainer}>
-        <form className={s.searchForm} onSubmit={this.hendleSubmit}>
-          <button type="submit" className={s.searchFormbutton}>
-            <span className={s.searchFormbuttonlabel}>Search</span>
-          </button>
+        <div className={s.searchFormContainer}>
+          <form className={s.searchForm} onSubmit={this.hendleSubmit}>
+            <button type="submit" className={s.searchFormbutton}>
+              <span className={s.searchFormbuttonlabel}>Search</span>
+            </button>
 
-          <input
-            className={s.searchForminput}
-            type="text"
-            placeholder="Search movies.."
-            value={query}
-            onChange={this.handleChange}
-          />
-        </form>
+            <input
+              className={s.searchForminput}
+              type="text"
+              placeholder="Search movies.."
+              value={query}
+              onChange={this.handleChange}
+            />
+          </form>
         </div>
         <div>
           {
@@ -71,7 +88,7 @@ class MoviesPage extends Component {
             </Suspense>
           }
 
-          {error && <h2 className="error-message">{error}</h2>}
+          {error && <h2 className={s.errorMessage}>{error}</h2>}
         </div>
       </div>
     );

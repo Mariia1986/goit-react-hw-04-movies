@@ -4,7 +4,7 @@ import FilmDetails from '../../components/FilmDetails';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import Loading from '../../components/Loader';
 import '../../App.css';
-import s from "./MoviesDetailsPage.module.css"
+import s from './MoviesDetailsPage.module.css';
 const { getMovieInfo } = api;
 
 const Cast = lazy(() =>
@@ -45,15 +45,21 @@ class MoviesDetailsPage extends Component {
     const { location, match } = this.props;
     return (
       <div>
-        <button className={s.buttonGoBack} onClick={this.handleGoBack} type="button">
-        {'<- Go back'}
+        <button
+          className={s.buttonGoBack}
+          onClick={this.handleGoBack}
+          type="button"
+        >
+          {'<- Go back'}
         </button>
         <div>{filmDetail && <FilmDetails filmDetail={filmDetail} />}</div>
         <div>
           <h2 className={s.filmDetailsTitle}>Additional information</h2>
           <ul className={s.navContainer}>
             <li className={s.navItem}>
-              <NavLink className={s.navLink} activeClassName={s.activeNavLink}
+              <NavLink
+                className={s.navLink}
+                activeClassName={s.activeNavLink}
                 to={{
                   pathname: `${match.url}/cast`,
                   state: { ...location.state },
@@ -63,7 +69,9 @@ class MoviesDetailsPage extends Component {
               </NavLink>
             </li>
             <li className={s.navItem}>
-              <NavLink className={s.navLink} activeClassName={s.activeNavLink}
+              <NavLink
+                className={s.navLink}
+                activeClassName={s.activeNavLink}
                 to={{
                   pathname: `${match.url}/rewievs`,
                   state: { ...location.state },

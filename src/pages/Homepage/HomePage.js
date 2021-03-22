@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import api from '../../api/api';
 import { Link } from 'react-router-dom';
-import s from "./HomePage.module.css"
+import s from './HomePage.module.css';
 const { getTrendFilms } = api;
-
 
 class HomePage extends Component {
   state = {
@@ -23,23 +22,23 @@ class HomePage extends Component {
     return (
       <div>
         <h1 className={s.header}>Trending today</h1>
-        <ul className={s.trendList}> 
-          {
-            results.map(({ id, original_title }) => {
-              return (
-                
-                <li className={s.trendListItem} key={id}>
-                  <Link  className={s.navLink} activeClassName={s.activeNavLink}
-                    to={{
-                      pathname: `movies/${id}`,
-                      state: { from: location },
-                    }}
-                  >
-                    {original_title}
-                  </Link>
-                </li>
-              );
-            })}
+        <ul className={s.trendList}>
+          {results.map(({ id, original_title }) => {
+            return (
+              <li className={s.trendListItem} key={id}>
+                <Link
+                  className={s.navLink}
+                  activeClassName={s.activeNavLink}
+                  to={{
+                    pathname: `movies/${id}`,
+                    state: { from: location },
+                  }}
+                >
+                  {original_title}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
     );

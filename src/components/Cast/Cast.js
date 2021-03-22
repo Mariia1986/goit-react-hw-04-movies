@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import api from '../../api/api';
-import s from "./Cast.module.css"
+import s from './Cast.module.css';
 const { getFilmActors } = api;
-
-// console.log();
 
 class Cast extends Component {
   state = {
@@ -12,7 +11,7 @@ class Cast extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.moviesId;
-    // console.log(getFilmActors(id));
+
     getFilmActors(id).then(cast => {
       this.setState({ actors: cast });
     });
@@ -45,3 +44,7 @@ class Cast extends Component {
 }
 
 export default Cast;
+
+Cast.propTypes = {
+  id: PropTypes.string,
+};

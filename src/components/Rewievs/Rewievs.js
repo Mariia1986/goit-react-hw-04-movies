@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import api from '../../api/api';
+import PropTypes from 'prop-types';
+import s from "./rewievs.module.css"
 const{getRewiesFilm}=api
+
 class Rewievs extends Component{
 
 state={
@@ -36,7 +39,7 @@ render (){
               );
             })
           ) : (
-            <h2 className="error-message">{error}</h2>
+            <h2 className={s.errorMessage}>{error}</h2>
           )}
         </ul>
       </div>
@@ -46,3 +49,7 @@ render (){
 }
 
 export default Rewievs
+
+Rewievs.propTypes={
+  id:PropTypes.string
+}

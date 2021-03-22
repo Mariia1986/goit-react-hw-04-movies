@@ -9,7 +9,7 @@ const SerchingFilms=({films, match, location})=>{
 
     return(
         <ul className={s.searchList}>
-            {films && films.map(({ id, original_title }) => (
+            {films && films.map(({name, id, original_title }) => (
           <li  key={id} className={s.searchListItem}>
             <NavLink
               to={{
@@ -18,7 +18,7 @@ const SerchingFilms=({films, match, location})=>{
               }}
               className={s.navLink}
             >
-           {original_title}
+           {name || original_title}
             </NavLink>
           </li>
         ))}
@@ -27,3 +27,15 @@ const SerchingFilms=({films, match, location})=>{
 }
 
 export default withRouter(SerchingFilms)
+
+SerchingFilms.propTypes={
+ 
+    films: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string,
+        original_title: PropTypes.string,
+      }),
+    ),
+
+}

@@ -1,5 +1,6 @@
 import React from "react"
 import s from "./filmDetails.module.css"
+import PropTypes from 'prop-types';
 
 
 
@@ -22,3 +23,7 @@ const FilmDetails=({filmDetail})=>{
 }
 
 export default FilmDetails
+
+FilmDetails.propTypes={
+    filmDetail:PropTypes.object   
+}
