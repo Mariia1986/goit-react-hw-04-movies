@@ -32,12 +32,7 @@ class MoviesPage extends Component {
       });
   };
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   const { query } = this.state;
-  //   if (prevState.query !== query) {
-  //     this.getSearchbyQuery(query);
-  //   }
-  // }
+ 
 
   handleChange = e => {
     this.setState({ query: e.target.value });
