@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/Cast/Cast.module.css"],"names":[],"mappings":"AAAA,sBACI,YAAa,CACb,sCAAuC,CACvC,yCAA0C,CAC1C,YACJ","file":"movie-details-page-cast.76b9f683.chunk.css","sourcesContent":[".castList{\r\n    display: grid;\r\n    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;\r\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;\r\n    grid-gap: 2vw;\r\n}"]}

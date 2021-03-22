@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/Rewievs/rewievs.module.css"],"names":[],"mappings":"AAAA,6BACI,iBAAkB,CAClB,aAEA","file":"movie-details-page-reviews.8b807153.chunk.css","sourcesContent":[".errorMessage{\r\n    text-align: center;\r\n    color:  rgb(117, 23, 39);\r\n  \r\n    }"]}
