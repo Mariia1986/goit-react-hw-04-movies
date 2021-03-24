@@ -7,6 +7,7 @@ const { getFilmActors } = api;
 class Cast extends Component {
   state = {
     actors: [],
+    error:"",
   };
 
   componentDidMount() {
@@ -14,7 +15,8 @@ class Cast extends Component {
 
     getFilmActors(id).then(cast => {
       this.setState({ actors: cast });
-    });
+    }).catch(error => {
+      this.setState({ error })});
   }
 
   render() {

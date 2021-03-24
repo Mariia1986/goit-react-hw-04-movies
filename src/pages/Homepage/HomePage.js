@@ -7,12 +7,14 @@ const { getTrendFilms } = api;
 class HomePage extends Component {
   state = {
     results: [],
+    error:""
+    
   };
 
   componentDidMount() {
     getTrendFilms().then(results => {
       this.setState({ results });
-    });
+    }).catch(error=>{this.state({error})})
   }
 
   render() {

@@ -8,13 +8,17 @@ const getTrendFilms = () => {
     })
     .then(({ results }) => {
       return results;
-    });
+    }).catch (error=> {
+      console.error(error.message);
+    })
 };
 
 const getMovieInfo = id => {
   return fetch(`${baseUrl}movie/${id}?api_key=${key}`).then(res => {
     return res.json();
-  });
+  }).catch (error=> {
+    console.error(error.message);
+  })
 };
 
 const getSearchMovies = query => {
@@ -37,7 +41,9 @@ const getFilmActors = id => {
     })
     .then(({ cast }) => {
       return cast;
-    });
+    }) .catch (error=> {
+      console.error(error.message);
+    })
 };
 
 const getRewiesFilm = id => {

@@ -17,7 +17,8 @@ class MoviesPage extends Component {
   componentDidMount() {
     // console.log(this.props.location.search);
     if (this.props.location.search) {
-      this.getSearchbyQuery(this.props.location.search.slice(7));
+      this.getSearchbyQuery(this.props.location.search.slice(7))
+      ;
     } 
     
   }

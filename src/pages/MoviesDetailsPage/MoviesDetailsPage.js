@@ -22,6 +22,7 @@ const Rewievs = lazy(() =>
 class MoviesDetailsPage extends Component {
   state = {
     filmDetail: [],
+    error:"",
   };
 
   componentDidMount() {
@@ -29,7 +30,8 @@ class MoviesDetailsPage extends Component {
 
     getMovieInfo(id).then(result => {
       this.setState({ filmDetail: { ...result } });
-    });
+    }).catch(error => {
+      this.setState({ error })});
   }
 
   handleGoBack = () => {
